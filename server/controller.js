@@ -66,12 +66,20 @@ async function markAsHelpful (req, res) {
   //console.log(`Marking review ${req.query.review_id} as helpful`)
 }
 
-const reportReview = (req, res) => {
+async function reportReview (req, res) {
   if (!req.query.review_id) {
     return res.status(400).send('Please provide a review_id')
   }
 
-  //console.log(`Marking review ${req.query.review_id} as helpful`)
+  const updateHelpfulness = await pool.query(
+    `UPDATE reviews
+     SET reported = true
+     WHERE reviews.id = ${req.query.review_id}
+    `
+  );
+
+  res.status(201).send('Review has been reported')
+
 }
 
 module.exports = {
