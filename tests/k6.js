@@ -18,8 +18,8 @@ default: function () {
 
     const pages = [
       '/reviews?product_id=37311',
-      // '/qa/questions/131217/answers',
-      // '/this-does-not-exist/',
+      '/reviews/helpful?review_id=1',
+      '/reviews/report?review_id=1'
     ]
 
     for (let page of pages) {
